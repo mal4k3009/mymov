@@ -1,0 +1,341 @@
+/* General Body Styles */
+body {
+  background-color: #121212; /* Dark background */
+  color: #e0e0e0; /* Light text */
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar Styling */
+.navbar {
+  padding: 20px;
+  background-color: #222; /* Dark background for navbar */
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Search Bar Styling */
+.navbar form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+.navbar input {
+  padding: 10px;
+  width: 80%;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: 2px solid #ff6347; /* Neon border */
+  background-color: #333; /* Dark input background */
+  color: #fff; /* White text */
+  font-size: 16px;
+}
+
+.navbar input:focus {
+  outline: none;
+  border-color: #32cd32; /* Neon green focus */
+}
+
+/* Button Styling */
+.navbar button {
+  padding: 10px 15px;
+  background-color: #ff6347; /* Neon red */
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar button:hover {
+  background-color: #32cd32; /* Neon green hover */
+}
+
+/* Movie List Styling */
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+/* Movie Card Styling */
+.movie-card {
+  background-color: #1f1f1f; /* Dark background for card */
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  position: relative; /* To position the expanded content */
+  overflow: hidden; /* Hide overflowing content */
+}
+
+/* Hover and Expanded Effect */
+.movie-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 30px rgba(0, 255, 0, 0.4); /* Neon green glow on hover */
+}
+
+/* Movie Card Hover Effect */
+.movie-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 30px rgba(0, 255, 0, 0.4); /* Neon green glow on hover */
+}
+
+.movie-card img {
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* Title and Overview Text */
+.movie-card h3 {
+  color: #ff6347; /* Neon red */
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+/* Movie Description (Three-line clamp) */
+.movie-card p {
+  display: -webkit-box; /* For Webkit browsers (Chrome, Safari) */
+  -webkit-line-clamp: 3; /* Limit to 3 lines */
+  -webkit-box-orient: vertical; /* Needed for -webkit-line-clamp to work */
+  overflow: hidden; /* Hide the overflowed content */
+  text-overflow: ellipsis; /* Add ellipsis (...) at the end if the text overflows */
+  font-size: 0.95rem;
+  color: #dcdcdc;
+  margin-bottom: 10px;
+
+  display: -moz-box; /* For Firefox */
+  -moz-line-clamp: 3; /* Limit to 3 lines (for Firefox) */
+  -moz-box-orient: vertical; /* Needed for -moz-line-clamp to work */
+  
+  /* Standard line-clamp for modern browsers that support it */
+  line-clamp: 3; /* Limit to 3 lines (standard property) */
+  box-orient: vertical; /* Needed for line-clamp to work */
+}
+
+/* Show full description on hover */
+.movie-card:hover p,
+.movie-card.expanded p {
+  -webkit-line-clamp: unset; /* Remove line limit on hover */
+  line-clamp: unset; /* Remove line limit on hover for non-Webkit browsers */
+  color: #fff; /* Change text color on hover */
+}
+
+/* Expanded content (full description) */
+.movie-card.expanded .expanded-content {
+  display: block; /* Show expanded content */
+  padding-top: 10px;
+  font-size: 0.95rem;
+  color: #dcdcdc;
+  margin-top: 15px;
+  background-color: #333; /* Slightly darker background for expanded content */
+  border-radius: 5px;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+/* Movie Info (Rating & Release Date) */
+.movie-info {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.movie-info p {
+  margin: 5px 0;
+  color: #32cd32; /* Neon green for movie info */
+}
+
+/* Loading Spinner */
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Mobile View Adjustments */
+@media (max-width: 768px) {
+  .movie-list {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  .navbar form {
+    flex-direction: column;
+  }
+
+  .navbar input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .navbar button {
+    width: 100%;
+  }
+
+  /* Show full description on mobile tap */
+  .movie-card p {
+    display: block; /* Make sure it behaves like a block element */
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+  }
+}
+
+/* Genre Filter Styling */
+.genre-filter {
+  margin-left: 20px;
+}
+
+.genre-filter select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid #ff6347;
+  background-color: #333;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.genre-filter select:hover {
+  border-color: #32cd32;
+}
+
+/* Add to index.css */
+
+/* Favorite Button Styling */
+.favorite-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #ff6347; /* Neon red color */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.favorite-btn:hover {
+  color: #32cd32; /* Neon green color on hover */
+}
+
+.favorite-btn:focus {
+  outline: none;
+}
+/* Add to index.css */
+
+/* Favorite Button Styling */
+.favorite-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #ff6347; /* Neon red color */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.favorite-btn:hover {
+  color: #32cd32; /* Neon green color on hover */
+}
+
+.favorite-btn:focus {
+  outline: none;
+}
+
+/* Styling for the button to toggle between all and favorite movies */
+.favorite-toggle-btn {
+  padding: 10px 20px;
+  background-color: #ff6347;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 20px 0;
+  transition: background-color 0.3s;
+}
+
+.favorite-toggle-btn:hover {
+  background-color: #32cd32;
+}
+
+/* Add to index.css or a separate CSS file */
+
+.movie-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.movie-modal {
+  background: #000000;
+  padding: 20px;
+  width: 80%;
+  max-width: 800px;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+}
+
+.movie-modal img {
+  width: 200px;
+  margin-right: 20px;
+}
+
+.movie-modal-info {
+  flex: 1;
+}
+
+.movie-modal-info h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.movie-modal-info p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  background: none;
+  border: none;
+  color: #333;
+  cursor: pointer;
+}
+
+.rating-dropdown {
+  margin-top: 10px;
+}
+
+.rating-dropdown label {
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.rating-dropdown select {
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
